@@ -1,0 +1,29 @@
+<table>
+  <thead>
+    <tr>
+      <th>Item</th>
+      <th>Quantity</th>
+      <th>Price</th>
+      <th>Total</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% order.line_items.each do |line_item| %>
+      <tr>
+        <td><%= line_item.description %></td>
+        <td><%= line_item.quantity %></td>
+        <td><%= number_to_currency line_item.price %></td>
+        <td><%= number_to_currency line_item.total %></td>
+      </tr>
+    <% end %>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td></td>
+      <td colspan="2">Grand Total</td>
+      <td><%= number_to_currency order.total %></td>
+    </tr>
+  </tfoot>
+</table>
+
+<%= link_to 'Pay', pay_path, class: 'button' %>

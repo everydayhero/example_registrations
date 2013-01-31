@@ -1,0 +1,26 @@
+<%= simple_form_for form, as: 'form', url: register_path do |form| %>
+  <%= form.error_notification %>
+
+  <fieldset>
+    <legend>Personal Information</legend>
+    <%= form.input :first_name %>
+    <%= form.input :surname %>
+    <%= form.input :nickname %>
+    <%= form.input :gender, as: :radio_buttons, collection: form.object.gender_options %>
+  </fieldset>
+
+  <fieldset>
+    <legend>Fundraising Information</legend>
+    <%= form.input :fundraiser, as: :radio_buttons, collection: form.object.fundraiser_options %>
+    <%= form.input :charity_id, collection: form.object.charity_options %>
+  </fieldset>
+
+  <fieldset>
+    <legend>Entry Information</legend>
+    <%= form.input :distance, as: :radio_buttons, collection: form.object.distance_options %>
+  </fieldset>
+
+  <div class="form-actions">
+    <%= form.button :submit, 'Confirm' %>
+  </div>
+<% end %>
