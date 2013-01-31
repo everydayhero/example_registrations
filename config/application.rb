@@ -17,7 +17,7 @@ module ExampleRegistrations
         hash      = ENV.select { |key| key =~ /^#{namespace.upcase}/ }
         hash.each do |key, value|
           new_key = key.gsub(namespace, '').downcase.to_sym
-          hash[new_key] => value
+          hash[new_key] = value
           hash.delete(key)
         end
       end
