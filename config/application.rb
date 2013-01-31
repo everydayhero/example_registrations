@@ -15,12 +15,12 @@ module ExampleRegistrations
       else
         namespace = file.split('.').first + '_'
         hash      = ENV.select { |key| key =~ /^#{namespace.upcase}/ }
+        new_hash  = {}
         hash.each do |key, value|
           new_key = key.gsub(namespace, '').downcase.to_sym
-          hash[new_key] = value
-          hash.delete(key)
+          new_hash[new_key] = value
         end
-        hash
+        new_hash
       end
     }
 
