@@ -43,6 +43,9 @@
     </div>
   </div>
 
-	<%= javascript_include_tag "application" %>
+  <script>
+    var campaignId = '<%= Rails.application.config.fundraiser_config.fetch(:campaign_id) %>';
+  </script>
+  <%= javascript_include_tag "application" %>
 </body>
 </html>
