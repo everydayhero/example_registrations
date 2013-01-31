@@ -13,7 +13,7 @@ module ExampleRegistrations
       if config_file && config_file.exist?
         YAML.load_file config_file
       else
-        namespace = file.split('.').first + '_'
+        namespace = file.split('.').first.to_s.upcase + '_'
         hash      = ENV.select { |key| key =~ /^#{namespace.upcase}/ }
         new_hash  = {}
         hash.each do |key, value|
