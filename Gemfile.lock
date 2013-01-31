@@ -17,7 +17,8 @@ GIT
 
 GIT
   remote: git://github.com/rails/rails.git
-  revision: fb3996f89d4ef8ab087e28b9b2ab691ba628a33c
+  revision: 9ec14c223b787d04b381511799b9b21499e29e68
+  ref: 9ec14c2
   specs:
     actionmailer (4.0.0.beta)
       actionpack (= 4.0.0.beta)
@@ -26,7 +27,7 @@ GIT
       activesupport (= 4.0.0.beta)
       builder (~> 3.1.0)
       erubis (~> 2.7.0)
-      rack (~> 1.4.3)
+      rack (~> 1.5.0)
       rack-test (~> 0.6.1)
     activemodel (4.0.0.beta)
       activesupport (= 4.0.0.beta)
@@ -134,7 +135,7 @@ GEM
       omniauth-oauth2 (~> 1.0.2)
     pg (0.14.1)
     polyglot (0.3.3)
-    rack (1.4.4)
+    rack (1.5.1)
     rack-test (0.6.2)
       rack (>= 1.0)
     rake (10.0.3)

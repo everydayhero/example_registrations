@@ -7,7 +7,6 @@ class PaymentsController < ApplicationController
   end
 
   def create
-    order = Order.find_by_token session[:order_token]
     order.add_transaction Transaction.new
     order.paid
     client       = FundraiserClient.new
