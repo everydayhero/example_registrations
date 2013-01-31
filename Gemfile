@@ -4,6 +4,7 @@ gem 'jquery-rails'
 gem 'omniauth-passport'
 gem 'simple_form', github: 'plataformatec/simple_form', branch: 'rails_4'
 gem 'rails', github: 'rails/rails'
+gem 'thin', '~> 1.5.0'
 
 group :development do
   gem 'sqlite3'
@@ -11,7 +12,6 @@ end
 
 group :production do
   gem 'pg'
-  gem 'thin', '~> 1.5.0'
 end
 
 group :assets do
