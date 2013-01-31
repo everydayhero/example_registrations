@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 ruby '1.9.3'
 
+gem 'asset_sync', '~> 0.5.4'
 gem 'jquery-rails'
 gem 'omniauth-passport'
 gem 'simple_form', github: 'plataformatec/simple_form', branch: 'rails_4'
