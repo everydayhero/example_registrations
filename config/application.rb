@@ -27,6 +27,7 @@ module ExampleRegistrations
 
     config.omniauth_provider_credentials = config.load_config.call('omniauth.yml')
     config.fundraiser_config             = config.load_config.call('fundraiser_config.yml')
+    config.passport_config               = config.load_config.call('passport_config.yml')
 
     # Custom directories with classes and modules you want to be autoloadable.
     # config.autoload_paths += %W(#{config.root}/extras)

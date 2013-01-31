@@ -19,4 +19,5 @@
 /tmp
 
 /config/fundraiser_config.yml
+/config/passport_config.yml
 /config/omniauth.yml
