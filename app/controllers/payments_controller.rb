@@ -16,7 +16,7 @@ class PaymentsController < ApplicationController
       uid: current_user.uid,
       campaign_id: Rails.application.config.fundraiser_config.fetch(:campaign_id),
       charity_id: primary_registration.charity.uid,
-      target: '700'
+      target: '700',
       birthday: current_user.birthday
     }
     individual_page = client.create_individual_page payload
