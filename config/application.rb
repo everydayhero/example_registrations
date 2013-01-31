@@ -10,7 +10,7 @@ module ExampleRegistrations
     config.load_config = ->(file) {
       config_file = config.root.join 'config', file
 
-      yaml = if config_file && config_file.exist?
+      if config_file && config_file.exist?
         YAML.load_file config_file
       else
         namespace = file.split('.').first + '_'
@@ -20,14 +20,13 @@ module ExampleRegistrations
           hash[new_key] = value
           hash.delete(key)
         end
+        hash
       end
-
-      yaml || {}
     }
 
-    config.omniauth_credentials = config.load_config.call('omniauth.yml')
-    config.fundraiser_config    = config.load_config.call('fundraiser_config.yml')
-    config.passport_config      = config.load_config.call('passport_config.yml')
+    config.omniauth_config    = config.load_config.call('omniauth.yml')
+    config.fundraiser_config  = config.load_config.call('fundraiser_config.yml')
+    config.passport_config    = config.load_config.call('passport_config.yml')
 
     # Custom directories with classes and modules you want to be autoloadable.
     # config.autoload_paths += %W(#{config.root}/extras)
