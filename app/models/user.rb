@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   has_many :orders
 
   def self.find_or_create_from_auth_hash auth_hash
-    find_by_uid(auth_hash.uid) || create_from_auth_hash(auth_hash)
+    find_by_uid(auth_hash.uid.to_s) || create_from_auth_hash(auth_hash)
   end
 
   def self.create_from_auth_hash auth_hash
