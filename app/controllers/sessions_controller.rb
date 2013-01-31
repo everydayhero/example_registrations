@@ -1,6 +1,5 @@
 class SessionsController < ApplicationController
   def create
-    raise user.inspect
     sign_in user
     redirect_to register_path
   end
