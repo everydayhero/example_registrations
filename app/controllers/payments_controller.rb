@@ -14,7 +14,7 @@ class PaymentsController < ApplicationController
     payload = {
       uid: current_user.uid,
       campaign_id: Rails.application.config.fundraiser_config.fetch(:campaign_id),
-      charity_id: primary_registration.charity.uid,
+      charity_id: registration.charity.uid,
       target: '700',
       birthday: current_user.birthday
     }
