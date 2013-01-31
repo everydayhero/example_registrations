@@ -45,7 +45,7 @@
         xhr = $.ajax({
           dataType: 'jsonp',
           ifModified: true,
-          url: 'http://localhost:3004/api/v1/campaigns/' + root.campaignId
+          url: root.baseUri + '/api/v1/campaigns/' + root.campaignId
         });
 
     xhr.done(function(data) {

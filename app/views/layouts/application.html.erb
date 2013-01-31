@@ -44,7 +44,8 @@
   </div>
 
   <script>
-    var campaignId = '<%= Rails.application.config.fundraiser_config.fetch(:campaign_id) %>';
+    var campaignId = '<%= Rails.application.config.fundraiser_config.fetch(:campaign_id) %>',
+        baseUri    = '<%= Rails.application.config.fundraiser_config.fetch(:base_uri) %>'
   </script>
   <%= javascript_include_tag "application" %>
 </body>
