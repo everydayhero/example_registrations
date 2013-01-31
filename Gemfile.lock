@@ -197,6 +197,7 @@ PLATFORMS
 DEPENDENCIES
   asset_sync (~> 0.5.4)
   compass-rails!
+  fog (~> 1.9.0)
   jquery-rails
   omniauth-passport
   pg
