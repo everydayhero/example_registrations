@@ -4,6 +4,16 @@ class RegistrationForm
   attr_accessor :registrant, :distance, :fundraiser, :charity_id
   attr_writer :first_name, :surname, :nickname, :gender
 
+  validates :birthday, presence: true
+
+  def initialize attributes
+    year  = attributes.delete(:'birthday(1i)')
+    month = attributes.delete(:'birthday(2i)')
+    day   = attributes.delete(:'birthday(3i)')
+
+    super attributes.merge(birthday: [year, month, day])
+  end
+
   def first_name
     @first_name || registrant.full_name.to_s.split(' ').first
   end
@@ -20,11 +30,23 @@ class RegistrationForm
     @gender || registrant.gender
   end
 
+  def birthday= values
+    @birthday ||= begin
+      return if values.compact.empty?
+      Date.parse values.join('-')
+    end
+  end
+
+  def birthday
+    @birthday || registrant.birthday
+  end
+
   def registration
     Registration.new first_name: first_name,
                      surname: surname,
                      nickname: nickname,
                      gender: gender,
+                     birthday: birthday,
                      distance: distance,
                      fundraiser: fundraiser,
                      charity_id: charity_id
