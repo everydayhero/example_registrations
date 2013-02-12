@@ -2,12 +2,14 @@ source 'https://rubygems.org'
 ruby '1.9.3'
 
 gem 'asset_sync', '~> 0.5.4'
+gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'fog', '~> 1.9.0'
 gem 'jquery-rails'
+gem 'money-rails', github: 'RubyMoney/money-rails'
 gem 'newrelic_rpm', '~> 3.5.5.38'
 gem 'omniauth-passport'
-gem 'simple_form', github: 'plataformatec/simple_form', branch: 'rails_4'
 gem 'rails', github: 'rails/rails', ref: '9ec14c2'
+gem 'simple_form', github: 'plataformatec/simple_form', branch: 'rails_4'
 gem 'unicorn', '~> 4.5.0'
 
 group :development do

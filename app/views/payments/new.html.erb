@@ -1,9 +1,26 @@
-<%= simple_form_for :payment, url: pay_path do |form| %>
+<%= simple_form_for :payment, url: pay_path(order_id: order) do |form| %>
   <%= form.error_notification %>
 
   <div class="form-inputs">
-    <%= form.input :total, disabled: true, input_html: {value: number_to_currency(order.total)} %>
-    <%= form.input :name, label: 'Name on Card', input_html: {value: current_user.full_name} %>
+    <div class="row">
+      <div class="twelve columns">
+        <%= form.label :total %>
+        <div class="row">
+          <div class="twelve columns">
+            <div class="row collapse">
+              <div class="one columns mobile-one">
+                <span class="prefix">$</span>
+              </div>
+              <div class="eleven columns">
+                <%= form.text_field :total, disabled: true,
+                                            value: number_to_currency(order.total, unit: '') %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <%= form.input :name, label: 'Name on Card' %>
     <%= form.input :number %>
     <%= form.input :expiry, as: :date, start_year: Time.zone.now.year,
                                        add_month_numbers: true,

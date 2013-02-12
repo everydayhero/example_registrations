@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
 
   def sign_in user
     user.generate_remember_token
-    cookies.signed[:user_id] = {
+    cookies.signed[:registrations_user_id] = {
       value: [user.id, user.remember_token]
     }
     self.current_user = user
@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
 
   def sign_out
     current_user.reset_remember_token
-    cookies.delete :user_id
+    cookies.delete :registrations_user_id
     self.current_user = nil
   end
 
@@ -31,7 +31,7 @@ class ApplicationController < ActionController::Base
   protected
 
   def retrieve_user
-    id, token = cookies.signed[:user_id]
+    id, token = cookies.signed[:registrations_user_id]
     User.find_by_id_and_remember_token id, token
   end
 end

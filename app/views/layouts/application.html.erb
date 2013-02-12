@@ -4,49 +4,32 @@
 <!--[if IE 7 ]>    <html class="ie7" lang="en"> <![endif]-->
 <!--[if IE 8 ]>    <html class="ie8" lang="en"> <![endif]-->
 <!--[if (gte IE 9)|!(IE)]><!--> <html lang="en"> <!--<![endif]-->
-<head>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>Registrations</title>
-	<%= stylesheet_link_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-  <nav class="top-bar">
-    <div class="row">
-      <div class="twelve columns">
-        <ul class="right">
-          <% if signed_in? %>
-            <li class="signed-in">
-              <%= current_user.full_name %>
-              (<%= link_to 'sign out', sign_out_path, method: :delete %>)
-            </li>
-          <% else %>
-            <li><%= link_to 'Sign In', '/auth/passport' %></li>
-          <% end %>
-        </ul>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registrations</title>
+    <%= stylesheet_link_tag "application" %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <div class="row" id="masthead">
+      <div class="six columns"><%= link_to image_tag('logo.png'), root_path %></div>
+      <div class="six columns"><%= link_to image_tag('start.png'), register_path %></div>
+    </div>
+
+    <div class="row" id="content">
+      <div class="eight columns">
+        <%= yield %>
+      </div>
+
+      <div id="sidebar" class="four columns">
       </div>
     </div>
-  </nav>
 
-  <div class="row" id="masthead">
-    <div class="six columns"><%= link_to image_tag('logo.png'), root_path %></div>
-    <div class="six columns"><%= link_to image_tag('start.png'), '/auth/passport' %></div>
-  </div>
-
-  <div class="row" id="masthead">
-    <div class="eight columns">
-      <%= yield %>
-    </div>
-
-    <div id="sidebar" class="four columns">
-    </div>
-  </div>
-
-  <script>
-    var campaignId = '<%= Rails.application.config.fundraiser_config.fetch(:campaign_id) %>',
-        baseUri    = '<%= Rails.application.config.fundraiser_config.fetch(:base_uri) %>'
-  </script>
-  <%= javascript_include_tag "application" %>
-</body>
+    <script>
+      var campaignId = '<%= Rails.application.config.fundraiser_config.fetch(:campaign_id) %>',
+          baseUri    = '<%= Rails.application.config.fundraiser_config.fetch(:base_uri) %>'
+    </script>
+    <%= javascript_include_tag "application" %>
+  </body>
 </html>

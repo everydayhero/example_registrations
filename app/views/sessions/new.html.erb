@@ -1,0 +1,13 @@
+<%= flash[:alert] if flash[:alert] %>
+
+<%= simple_form_for :session, url: sign_in_path do |form| %>
+  <%= form.input :email %>
+  <%= form.input :password %>
+
+  <div class="form-actions">
+    <%= form.button :submit, 'Sign In' %>
+  </div>
+<% end %>
+
+<%= link_to 'Sign In with Passport', '/auth/passport' %> |
+<%= link_to 'Create an account', new_user_path %>

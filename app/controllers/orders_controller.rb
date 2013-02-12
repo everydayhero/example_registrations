@@ -1,29 +1,34 @@
 class OrdersController < ApplicationController
-  helper_method :form, :order
-
-  def show
-  end
-
-  def new
-  end
+  helper_method :registration, :order
 
   def create
     order = Order.new
-    order.add_biller current_user
-    order.add_registration form.registration
+    order.add_registration registration
     order.checkout
-    session[:order_token] = order.token
 
-    redirect_to confirm_path
+    redirect_to confirm_path(order_id: order)
+  end
+
+  def update
+    order.add_registration registration
+    order.save
+
+    redirect_to confirm_path(order_id: order)
   end
 
   private
 
-  def form
-    @form ||= RegistrationForm.new params.fetch(:form, Hash.new).merge(registrant: current_user)
+  def registration
+    @registration ||= Registration.new create_params
+  end
+
+  def create_params
+    params.require(:registration).permit :first_name, :surname,
+      :nickname, :gender, :birthday, :fundraiser, :charity_id, :target,
+      :distance, :email
   end
 
   def order
-    @order ||= Order.find_by_token! session[:order_token]
+    @order ||= Order.find params[:order_id]
   end
 end

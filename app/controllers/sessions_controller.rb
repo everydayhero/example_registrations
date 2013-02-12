@@ -1,7 +1,12 @@
 class SessionsController < ApplicationController
   def create
-    sign_in user
-    redirect_to register_path
+    if user
+      sign_in user
+      redirect_to register_path
+    else
+      flash.now.alert = 'Authentication failed'
+      render :new
+    end
   end
 
   def destroy
@@ -9,13 +14,7 @@ class SessionsController < ApplicationController
     redirect_to root_path
   end
 
-  private
-
   def user
-    @user ||= User.find_or_create_from_auth_hash auth_hash
-  end
-
-  def auth_hash
-    @auth_hash ||= request.env['omniauth.auth']
+    @user ||= User.authenticate params.fetch(:session, Hash.new).slice(:email, :password)
   end
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130201012015) do
+ActiveRecord::Schema.define(version: 20130211051340) do
 
   create_table "charities", force: true do |t|
     t.string   "name"
@@ -64,6 +64,10 @@ ActiveRecord::Schema.define(version: 20130201012015) do
     t.string   "fundraiser"
     t.integer  "charity_id"
     t.date     "birthday"
+    t.string   "email"
+    t.integer  "target_cents",  default: 0
+    t.integer  "uid"
+    t.integer  "invitation_id"
   end
 
   create_table "transactions", force: true do |t|
@@ -87,6 +91,7 @@ ActiveRecord::Schema.define(version: 20130201012015) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "gender"
+    t.string   "password_digest"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

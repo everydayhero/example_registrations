@@ -4,6 +4,7 @@ class Order < ActiveRecord::Base
   belongs_to :user
 
   has_many :line_items
+  has_many :registrations, through: :line_items, source: :sourceable, source_type: 'Registration'
   has_many :transactions
 
   def add_biller biller
@@ -36,12 +37,12 @@ class Order < ActiveRecord::Base
     self.update_attributes token: Token.generate
   end
 
-  def invalidate_token
-    self.update_attributes token: nil
+  def primary_registrant
+    registrations.first
   end
 
-  def primary_registration
-    line_items.where(sourceable_type: 'Registration').first.sourceable
+  def secondary_registrants
+    registrations.secondaries
   end
 
   def total

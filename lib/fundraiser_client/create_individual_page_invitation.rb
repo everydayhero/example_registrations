@@ -1,6 +1,6 @@
 module FundraiserClient
-  class IndividualPage
-    attr_accessor :id, :name, :slug, :url
+  class CreateIndividualPageInvitation
+    attr_accessor :id, :email, :accepted_at
 
     def initialize attributes = {}
       attributes.each do |attribute, value|

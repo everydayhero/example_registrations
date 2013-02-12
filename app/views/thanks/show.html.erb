@@ -1,3 +1,5 @@
 <p>Thanks for taking part in Run Melbourne 2013!</p>
 
-<p>Here is your fundraising page.</p>
+<% if order.primary_registrant.fundraiser? %>
+  <%= link_to 'Click here to activate your fundraising page', '/auth/passport', class: 'button' %>
+<% end %>

@@ -1,0 +1,12 @@
+<%= simple_form_for new_user do |form| %>
+  <%= form.input :full_name %>
+  <%= form.input :email %>
+  <%= form.input :birthday, start_year: 1900,
+                            end_year: Time.zone.now.year %>
+  <%= form.input :password %>
+  <%= form.input :password_confirmation %>
+
+  <div class="form-actions">
+    <%= form.button :submit %>
+  </div>
+<% end %>

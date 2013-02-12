@@ -1,5 +1,5 @@
 module FundraiserClient
-  class IndividualPage
+  class TeamPage
     attr_accessor :id, :name, :slug, :url
 
     def initialize attributes = {}

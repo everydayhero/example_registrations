@@ -1,4 +1,4 @@
-<%= simple_form_for registration, url: register_path do |form| %>
+<%= simple_form_for registration, url: form_url do |form| %>
   <%= form.error_notification %>
 
   <fieldset>
@@ -12,6 +12,7 @@
       </div>
     </div>
     <%= form.input :nickname %>
+    <%= form.input :email %>
     <%= form.input :gender, as: :radio_buttons, collection: gender_options %>
     <%= form.input :birthday, as: :date, end_year: Time.zone.now.year,
                                          start_year: 1900 %>

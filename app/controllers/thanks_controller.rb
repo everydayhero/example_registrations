@@ -2,11 +2,14 @@ class ThanksController < ApplicationController
   helper_method :order
 
   def show
+    if order.secondary_registrants.already_fundraising('individual').empty?
+      CreateIndividualPageInvitationService.from_order order
+    end
+
+    session[:order_token] = order.token
   end
 
-  private
-
   def order
-    @order ||= Order.find_by_token! session.delete(:order_token)
+    @order ||= Order.find params[:order_id]
   end
 end
