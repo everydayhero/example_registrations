@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130211051340) do
+ActiveRecord::Schema.define(version: 20130212104959) do
 
   create_table "charities", force: true do |t|
     t.string   "name"
@@ -68,6 +68,7 @@ ActiveRecord::Schema.define(version: 20130211051340) do
     t.integer  "target_cents",  default: 0
     t.integer  "uid"
     t.integer  "invitation_id"
+    t.string   "team_name"
   end
 
   create_table "transactions", force: true do |t|

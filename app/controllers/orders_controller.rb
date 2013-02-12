@@ -25,7 +25,7 @@ class OrdersController < ApplicationController
   def create_params
     params.require(:registration).permit :first_name, :surname,
       :nickname, :gender, :birthday, :fundraiser, :charity_id, :target,
-      :distance, :email
+      :distance, :email, :team_name
   end
 
   def order

@@ -23,6 +23,10 @@ class Registration < ActiveRecord::Base
     %w(individual team).include? fundraiser
   end
 
+  def fundraise_as type
+    fundraiser == type
+  end
+
   def description
     distance
   end

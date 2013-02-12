@@ -1,5 +1,5 @@
 class RegistrationsController < ApplicationController
-  helper_method :registration, :form_url
+  helper_method :registration, :form_url, :order
 
   def registration
     @registration ||= Registration.new
@@ -7,5 +7,9 @@ class RegistrationsController < ApplicationController
 
   def form_url
     register_path
+  end
+
+  def order
+    @order ||= Order.new
   end
 end

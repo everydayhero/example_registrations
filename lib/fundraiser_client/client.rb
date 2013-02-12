@@ -33,13 +33,12 @@ module FundraiserClient
     def create_join_team_invitation id, attributes
       response = connection.post "/team-pages/#{id}/invitations", attributes
 
-      response['create_individual_page_invitations'].map do |attributes|
-        JoinTeamInvitation.new attributes.slice('id', 'email', 'accepted_at', 'team_page_id')
-      end
+      JoinTeamInvitation.new response['join_team_invitation'].slice('id', 'email', 'accepted_at', 'team_page_id')
     end
 
     def get_charities campaign_id = nil
       response = connection.get '/charities', campaign_id: campaign_id
+
       response['charities'].map { |attributes| Charity.new(attributes.slice('id', 'name')) }
     end
   end

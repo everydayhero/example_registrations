@@ -34,7 +34,7 @@ module FundraiserClient
     end
 
     def request resource
-      resource['User-Agent']    = 'Passport Ruby Client'
+      resource['User-Agent']    = 'Fundraiser Ruby Client'
       resource['Authorization'] = "Token token=#{@config.token}"
       resource.content_type     ||= 'application/json'
       parse http.request(resource)

@@ -21,8 +21,11 @@
   <fieldset>
     <legend>Fundraising Information</legend>
     <%= form.input :fundraiser, as: :radio_buttons,
-                                collection: fundraiser_options %>
+                                collection: fundraiser_options(order) %>
     <%= form.input :charity_id, collection: charity_options %>
+    <% unless order.primary_registrant %>
+      <%= form.input :team_name %>
+    <% end %>
     <div class="row">
       <div class="twelve columns">
         <%= form.label :target %>
